@@ -1,6 +1,5 @@
 {
-  "_from": "laravel-mix-assets-splitter@^1.0.4",
-  "_id": "laravel-mix-assets-splitter@1.0.4",
+  "_from": "laravel-mix-assets-splitter@^1.0.5",
   "_inBundle": false,
   "_integrity": "sha512-VbwLcaJVb67qbYOr8DAYq43p7m8L1D1naxXP5ysq0198WCh1oxDONWyCq7PglK/i2LRx9s9+LaZ0Z3XK9Dz/GQ==",
   "_location": "/laravel-mix-assets-splitter",
@@ -22,13 +21,10 @@
   "_shasum": "d94d80b5ab98cb03a1d93bd0990849b9dc65a05f",
   "_spec": "laravel-mix-assets-splitter@^1.0.4",
   "_where": "D:\\OpenServer\\domains\\beetroot-starter-2021.local\\wp-content\\themes\\skeleton-theme",
-  "author": {
-    "name": "Oleg Draganchuk"
-  },
+  "author": "Oleg Draganchuk",
   "bugs": {
     "url": "https://github.com/olegdraganchuk/laravel-mix-assets-splitter/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "laravel-js-str": "^1.0.6",
     "path": "^0.12.7"
@@ -60,5 +56,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.4"
+  "version": "1.0.5"
 }

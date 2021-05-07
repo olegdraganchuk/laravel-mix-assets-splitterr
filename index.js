@@ -13,8 +13,8 @@ const CollectFiles = (folder, files = []) => {
 
     return fs.readdirSync(folder).reduce((list, file, index, original) =>
             {
-              if (isFolder(`${folder}/${file}`)) {
-                return CollectFiles(`${folder}/${file}`, list);
+              if (isFolder(path.resolve(`${folder}/${file}`))) {
+                return CollectFiles(path.resolve(`${folder}/${file}`), list);
               } else {
                 return CombineFiles(list, [folder, file]);
               }
@@ -49,16 +49,19 @@ class CodeSplit {
     /** Run The Split Command via a specific mix method **/
     register(via, folder, to, allowedExt, ...parameters) {
         CollectFiles(folder).map(file => str(file).afterLast(file, '/').toString())
-            .filter(file => file !== null && typeof file !== "undefined")
+            .filter(file => {
+              let allowed = false;
+              if (typeof allowedExt !== 'undefined') {
+                let ext = path.extname(file);
+                if (allowedExt == ext) {
+                  allowed = true;
+                }
+              }
+              return file !== null && typeof file !== "undefined" && allowed;
+            })
             .forEach(
                 file => {
-                    if (typeof allowedExt !== 'undefined') {
-                      let ext = path.extname(file);
-                      if (allowedExt !== ext) {
-                        return;
-                      }
-                    }
-
+                  console.log(file);
                     if (typeof parameters === 'undefined') {
                       via(path.resolve(Mix.paths.rootPath, `${file}`), path.resolve(Mix.paths.rootPath, (`${to}`)));
                     } else {
