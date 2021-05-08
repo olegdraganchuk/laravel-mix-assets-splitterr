@@ -1,9 +1,6 @@
 let fs = require('fs');
 let mix = require('laravel-mix')
-let { Str } = require('laravel-js-str')
 const path = require('path');
-
-const str = value => Str.of(value);
 
 const CollectFiles = (folder, files = []) => {
     const isFolder = to => fs.statSync(to).isDirectory();
@@ -37,30 +34,21 @@ class CodeSplit {
         return ['split', 'codeSplit'];
     }
 
-    /**
-     * All dependencies that should be installed by Mix.
-     *
-     * @return {Array}
-     */
-    dependencies() {
-        return ['laravel-js-str'];
-    }
-
     /** Run The Split Command via a specific mix method **/
-    register(via, folder, to, allowedExt, ...parameters) {
-        CollectFiles(folder)
+    register(allowedExt, folder, to, ...parameters) {
+        let via;
+        if (allowedExt == 'js') { via = mix.js; }
+        if (allowedExt == 'scss') { via = mix.sass; }
+        allowedExt = '.'+allowedExt;
+        CollectFiles(path.resolve(folder) )
             .filter(file => {
               let fileName = path.parse(file).name;
               let fileExt = path.extname(file);
-              let dirName = path.parse(path.parse(file).dir).name;
-
               let allowed = false;
-              if (typeof allowedExt !== 'undefined') {
-                let ext = fileExt;
-                if (allowedExt == ext && fileName == dirName) {
-                  allowed = true;
-                }
+              if (allowedExt == fileExt && fileName.substring(0, 1) !== '_') {
+                allowed = true;
               }
+              console.log(file, typeof file, allowed, fileExt);
               return file !== null && typeof file !== "undefined" && allowed;
             })
             .forEach(
@@ -73,7 +61,6 @@ class CodeSplit {
                 }
        );
     }
-};
-
+}
 
 mix.extend('split', new CodeSplit());

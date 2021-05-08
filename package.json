@@ -1,26 +1,4 @@
 {
-  "_from": "laravel-mix-assets-splitter@^1.0.5",
-  "_inBundle": false,
-  "_integrity": "sha512-VbwLcaJVb67qbYOr8DAYq43p7m8L1D1naxXP5ysq0198WCh1oxDONWyCq7PglK/i2LRx9s9+LaZ0Z3XK9Dz/GQ==",
-  "_location": "/laravel-mix-assets-splitter",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "laravel-mix-assets-splitter@^1.0.4",
-    "name": "laravel-mix-assets-splitter",
-    "escapedName": "laravel-mix-assets-splitter",
-    "rawSpec": "^1.0.4",
-    "saveSpec": null,
-    "fetchSpec": "^1.0.4"
-  },
-  "_requiredBy": [
-    "#DEV:/"
-  ],
-  "_resolved": "https://registry.npmjs.org/laravel-mix-assets-splitter/-/laravel-mix-assets-splitter-1.0.4.tgz",
-  "_shasum": "d94d80b5ab98cb03a1d93bd0990849b9dc65a05f",
-  "_spec": "laravel-mix-assets-splitter@^1.0.4",
-  "_where": "D:\\OpenServer\\domains\\beetroot-starter-2021.local\\wp-content\\themes\\skeleton-theme",
   "author": "Oleg Draganchuk",
   "bugs": {
     "url": "https://github.com/olegdraganchuk/laravel-mix-assets-splitter/issues"
